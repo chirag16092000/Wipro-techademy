@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="value">1</h2>
+    
+</body>
+<script>
+    let values = document.getElementById("value");
+    let updateValue = parseInt(values.textContent);
+    const myPromise = new Promise(function(resolve,reject){
+    
+    if(updateValue>0){
+        setInterval(() =>{
+            updateValue = updateValue + 2;
+            value.textContent=`${updateValue}`;
+        },2000);
+    }
+    else{
+        reject("Number less than 1 not allowed");
+    }
+})
+
+myPromise.then((value) => {
+    console.log("Promise resolved:", value);
+    }).catch((error) => {
+        console.log("Promise rejected:", error);
+        });
+</script>
+</html>
