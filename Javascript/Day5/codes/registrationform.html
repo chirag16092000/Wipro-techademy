@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script>
+    function onRegister(){
+        const details = {
+        "name" : document.getElementById("name").value,
+        "mobile" : document.getElementById("mobile").value,
+        "email" : document.getElementById("email").value,
+        "city" : document.getElementById("city").value,
+        "dob" : document.getElementById("dob").value,
+        "password" : document.getElementById("password").value
+    }
+    console.log(details);
+
+    // const fulldetatails= JSON.stringify(details);
+    // document.getElementById("result").innerHTML=fulldetatails;
+     }
+
+
+
+</script>
+<body>
+    <form id="registration">
+        <p>
+            <label>Name : </label>
+            <input type="text" id="name">
+        </p>
+
+        <p>
+            <label>Mobile: </label>
+            <input id="mobile">
+        </p>
+
+        <p>
+            <label>Email : </label>
+            <input type="email" id="email">
+        </p>
+
+        <p>
+            <label>DOB : </label>
+            <input type="date" id="dob">
+        </p>
+
+        <p>
+            <label>City : </label>
+            <input type="text" id="city">
+        </p>
+
+        <p>
+            <label>Password : </label>
+            <input type="password" id="password">
+        </p>
+
+        <p>
+            <button type="button" onclick="onRegister()">Register</button>
+        </p>
+
+    </form>
+    </br>
+    <div id="result"></div>
+    </body> 
+    
+</body>
+</html>
