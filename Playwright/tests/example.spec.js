@@ -1,8 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
-const exp = require('constants');
 
-//home page
+// home page
 
 test("search bar",async({page})=>{
   test.setTimeout(10000);
@@ -68,9 +67,9 @@ test("share",async({page})=>{
 
 test("size select",async({page})=>{
   await page.goto("https://www.flipkart.com/metronaut-men-solid-casual-dark-green-shirt/p/itm27b1951c2811e?pid=SHTGTCJQGSTR5XDQ&lid=LSTSHTGTCJQGSTR5XDQRZC9FQ&marketplace=FLIPKART&store=clo%2Fash%2Faxc%2Fmmk%2Fkp7&srno=b_1_3&otracker=hp_rich_navigation_3_1.navigationCard.RICH_NAVIGATION_Fashion~Men%2527s%2BTop%2BWear~Men%2527s%2BCasual%2BShirts_S4ITKV5A4VL6&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_3_L2_view-all&fm=organic&iid=57c765ad-1ff0-456b-903b-9929af19d96b.SHTGTCJQGSTR5XDQ.SEARCH&ppt=browse&ppn=browse&ssid=cneya67ym80000001723804603973");
-  await expect(page.getByRole("listitem")
-  .filter({hasText:/L/})
-  .click())
+  await page.waitForSelector('ul.hSEbzK');
+  const size = page.locator('ul.hSEbzK >> text="4XL"');
+  await size.click();
 })
 
 test("select color",async({page})=>{
