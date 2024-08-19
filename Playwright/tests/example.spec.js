@@ -1,5 +1,6 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
+const { off } = require('process');
 
 // home page
 
@@ -79,7 +80,9 @@ test("select color",async({page})=>{
 
 test("select offers",async({page})=>{
   await page.goto("https://www.flipkart.com/metronaut-men-solid-casual-dark-green-shirt/p/itm27b1951c2811e?pid=SHTGTCJQGSTR5XDQ&lid=LSTSHTGTCJQGSTR5XDQRZC9FQ&marketplace=FLIPKART&store=clo%2Fash%2Faxc%2Fmmk%2Fkp7&srno=b_1_3&otracker=hp_rich_navigation_3_1.navigationCard.RICH_NAVIGATION_Fashion~Men%2527s%2BTop%2BWear~Men%2527s%2BCasual%2BShirts_S4ITKV5A4VL6&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_3_L2_view-all&fm=organic&iid=57c765ad-1ff0-456b-903b-9929af19d96b.SHTGTCJQGSTR5XDQ.SEARCH&ppt=browse&ppn=browse&ssid=cneya67ym80000001723804603973");
-  await expect(page.getByText('+39 more offers')).toBeVisible();
+  const offers = page.locator('button:has-text("more offers")');
+  await offers.waitFor({ state: 'visible' });
+  await offers.click();
 })
 
 test("show prices",async({page})=>{
