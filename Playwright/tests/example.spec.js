@@ -7,7 +7,10 @@ const { off } = require('process');
 test("search bar",async({page})=>{
   test.setTimeout(10000);
   await page.goto("https://www.flipkart.com/");
-  await page.getByPlaceholder("Search for Products, Brands and More").fill("Iphone 14");
+  const searchbar =await page.getByPlaceholder("Search for Products, Brands and More");
+  await searchbar.fill("Iphone 14");
+  await searchbar.press('Enter');
+  await expect(page.locator('div.KzDlHZ').nth(0)).toBeVisible();
 })
 
 test("Cart click",async({page})=>{
@@ -38,7 +41,7 @@ test("appliance section",async({page})=>{
 
 test("product heading",async({page})=>{
   await page.goto("https://www.flipkart.com/google-pixel-9-obsidian-256-gb/p/itm330ed8ebeefe1?pid=MOBH2HJGP3FGTECW&lid=LSTMOBH2HJGP3FGTECWIRLKP1&marketplace=FLIPKART&fm=neo%2Fmerchandising&iid=M_fbfa478f-f91c-4561-9f48-d320b05c5f7e_59_VAPFSVIRI72Z_MC.MOBH2HJGP3FGTECW&ppt=clp&ppn=mobile-phones-store&ssid=a4mzohex1c0000001723796709297&otracker=clp_pmu_v2_Google%2Bsmartphones_1_59.productCard.PMU_V2_Google%2BPixel%2B9%2B%2528Obsidian%252C%2B256%2BGB%2529_mobile-phones-store_MOBH2HJGP3FGTECW_neo%2Fmerchandising_0&otracker1=clp_pmu_v2_PINNED_neo%2Fmerchandising_Google%2Bsmartphones_LIST_productCard_cc_1_NA_view-all&cid=MOBH2HJGP3FGTECW");
-  const heading =await page.locator('h1:has-text("Google Pixel 9 (Obsidian, 256 GB)")');
+  const heading =page.locator('h1').locator({ hasText: "Google Pixel 9 (Obsidian, 256 GB)" });
   await heading.waitFor({ state: 'visible'});
 })
 
